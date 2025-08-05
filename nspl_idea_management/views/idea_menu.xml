@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <menuitem id="menu_idea_management_root"
+              name="Idea Management"
+              parent="project.menu_main_pm"
+              sequence="10"/>
+
+    <menuitem id="menu_idea_category"
+              name="Idea Categories"
+              parent="menu_idea_management_root"
+              action="action_idea_category"/>
+
+    <menuitem id="menu_idea"
+              name="Ideas"
+              parent="menu_idea_management_root"
+              action="action_idea"/>
+</odoo>
