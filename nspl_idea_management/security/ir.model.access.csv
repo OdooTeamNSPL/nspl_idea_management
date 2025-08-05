@@ -1,0 +1,4 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+nspl_idea_management.access_idea_idea,access_idea_idea,nspl_idea_management.model_idea_idea,base.group_user,1,1,1,1
+nspl_idea_management.access_idea_category,access_idea_category,nspl_idea_management.model_idea_category,base.group_user,1,1,1,1
+nspl_idea_management.access_idea_cancel_wizard,access_idea_cancel_wizard,nspl_idea_management.model_idea_cancel_wizard,base.group_user,1,1,1,1
