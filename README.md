@@ -1,0 +1,1 @@
+# nspl_idea_management
