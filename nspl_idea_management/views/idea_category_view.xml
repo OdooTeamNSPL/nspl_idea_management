@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record id="view_idea_category_form" model="ir.ui.view">
+        <field name="name">idea.category.form</field>
+        <field name="model">idea.category</field>
+        <field name="arch" type="xml">
+            <form string="Idea Category">
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field name="responsible_ids" widget="many2many_tags"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_idea_category_tree" model="ir.ui.view">
+        <field name="name">idea.category.tree</field>
+        <field name="model">idea.category</field>
+        <field name="arch" type="xml">
+            <tree string="Idea Categories">
+                <field name="name"/>
+                <field name="responsible_ids"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="action_idea_category" model="ir.actions.act_window">
+        <field name="name">Idea Categories</field>
+        <field name="res_model">idea.category</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+</odoo>
