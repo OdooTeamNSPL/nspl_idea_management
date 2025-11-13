@@ -23,7 +23,7 @@
                             invisible="state in ['cancelled', 'approved']"/>
 
                     <field name="state" widget="statusbar" options="{'clickable': true}"
-                           statusbar_visible="new,pending,confirmed,approved,done"/>
+                           statusbar_visible="new,confirmed,approved,done"/>
                 </header>
 
 

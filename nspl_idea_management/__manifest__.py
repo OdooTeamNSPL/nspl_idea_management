@@ -1,6 +1,6 @@
 {
     'name': 'Idea Management',
-    'version': '18.0',
+    'version': '19.0.1',
     'summary': 'Manage your POS users’ ideas efficiently',
     'description': """
     The Idea Management module enables users to propose ideas from the website, 

@@ -12,7 +12,7 @@
             <field name="body_html" type="html">
                 <html>
                     <body>
-                        <p>Hello<t t-out="object.idea_manager_id.name or 'Manager'"/>,
+                        <p>Hello <t t-out="object.idea_manager_id.name or 'Manager'"/>,
                         </p>
                         <p>A new idea titled
                             <strong>

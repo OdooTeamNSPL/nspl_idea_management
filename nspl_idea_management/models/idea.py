@@ -31,7 +31,6 @@ class Idea(models.Model):
 
     state = fields.Selection([
         ('new', 'New'),
-        ('pending', 'Pending'),
         ('confirmed', 'Confirmed'),
         ('approved', 'Approved'),
         ('cancelled', 'Cancelled'),
@@ -41,27 +40,24 @@ class Idea(models.Model):
     cancellation_reason = fields.Text(string="Cancellation Reason", readonly=True)
     rejection_reason = fields.Text(string="Rejection Reason", readonly=True)
 
-    @api.model
-    def create(self, vals):
-        vals['created_by_id'] = self.env.uid
-        return super().create(vals)
+    @api.model_create_multi
+    def create(self, vals_list):
+        for vals in vals_list:
+            vals['created_by_id'] = self.env.uid
+        return super().create(vals_list)
 
     def action_request_confirmation(self):
         for rec in self:
             if rec.state != 'new':
                 raise UserError("Only ideas in 'New' state can be requested for confirmation.")
-            rec.state = 'pending'
+            rec.state = 'confirmed'
             # Send email to Idea Manager
             template = self.env.ref('nspl_idea_management.email_template_idea_request_confirmation',
                                     raise_if_not_found=False)
             if template and rec.idea_manager_id:
                 template.send_mail(rec.id, force_send=True)
 
-    # def action_reject(self):
-    #     for rec in self:
-    #         if rec.state not in ['pending', 'confirmed']:
-    #             raise UserError("Only 'Pending' or 'Confirmed' ideas can be rejected.")
-    #         rec.state = 'rejected'
+
 
     def action_approve(self):
         for rec in self:
@@ -69,7 +65,7 @@ class Idea(models.Model):
                 raise UserError("Only confirmed ideas can be approved.")
             rec.state = 'approved'
 
-            #  Create project task
+
             if rec.project_id:
                 self.env['project.task'].create({
                     'name': f'Idea: {rec.name}',
